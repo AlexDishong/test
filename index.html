@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <script language="javascript">
+            var cheese = 0;
+            var adder = 1;
+            var cost1 = 25;
+            var cost5 = 100;
+            var cost10 = 500;
+            var notDisplayedYet = true;
+            
+            function displaycounter(){
+                cheese += adder;
+                
+                document.getElementById("display").innerHTML = cheese + " Cheese";
+                if(cheese >= 100 && notDisplayedYet){
+                    notDisplayedYet = false;
+                    alert("You got 100 Cheese!!")
+                }
+            }
+            function increaseCost1(){
+                if(cheese >= cost1){
+                    adder += 1;
+                    cheese -= cost1;
+                document.getElementById("display").innerHTML = cheese + " Cheese";
+                    cost1 = Math.round(cost1 + cost1 * 0.6);
+                    document.getElementById("cost1Display").innerHTML = cost1 + " Cheese";
+                }
+                else{
+                    alert("Insufficient Cheese");
+                }
+                
+            }
+            function increaseCost5(){
+                if(cheese >= cost5){
+                    adder += 5;
+                    cheese -= cost5;
+                    document.getElementById("display").innerHTML = cheese + " Cheese";
+                    cost5 = Math.round(cost5 + cost5 * 0.9);
+                    document.getElementById("cost5Display").innerHTML = cost5 + " Cheese";
+                }
+                else{
+                    alert("Insufficient Cheese");
+                }
+            }
+            function increaseCost10(){
+                if(cheese >= cost10){
+                    adder += 10;
+                    cheese -= cost10;
+                    document.getElementById("display").innerHTML = cheese + " Cheese";
+                    cost10 = Math.round(cost10 + cost10 * 1.2);
+                    document.getElementById("cost10Display").innerHTML = cost10 + " Cheese";
+                }
+                else{
+                    alert("Insufficient Cheese");
+                }
+            }
+        </script>
+        <style>
+            .flexbox{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .flexr{
+                display: flex;
+                flex-direction: row;
+            }
+            .my-button {
+                padding: 15px 30px;
+                font-size: 20px;
+            }
+            body{
+                font-size: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flexbox">
+            <div class="flexr">
+                <div id="display" style="font-family: 'Lucida Console', 'Courier New', monospace;">Press D'Cheese</div>
+            </div>
+            <div>
+                <input type="image" width="250px" height="250px" src="dcheese1.png" name="cheesy" onclick="displaycounter()">
+            </div>
+            <div class="flexr">
+                <div><input class="my-button" type="button" name="c1" value="+1 Cheese" onclick="increaseCost1()"></div>
+                <div id="cost1Display">25 Cheese</div>
+            </div>
+            <div class="flexr">
+                <div><input class="my-button" type="button" name="c5" value="+5 Cheese" onclick="increaseCost5()"></div>
+                <div id="cost5Display">100 Cheese</div>
+            </div>
+            <div class="flexr">
+                <div><input class="my-button" type="button" name="c10" value="+10 Cheese" onclick="increaseCost10()"></div>
+                <div id="cost10Display">500 Cheese</div>
+            </div>
+        </div>
+    </body>
+</html>
